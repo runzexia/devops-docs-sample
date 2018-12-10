@@ -6,7 +6,7 @@ metadata:
     component: ks-docs-sample
     tier: backend
   name: ks-docs-sample
-  namespace: kubesphere-system
+  namespace: kubesphere-docs-prod
 spec:
   progressDeadlineSeconds: 600
   replicas: 2
@@ -33,16 +33,12 @@ spec:
           value: js|html
         - name: CACHE_PUBLIC_EXPIRATION
           value: 3d
-        image: $DOCKERHUB_ORG/$APP_NAME:$TAG_NAME
+        image: $DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME
         imagePullPolicy: Always
         name: ks-docs
         ports:
         - containerPort: 80
           protocol: TCP
-        resources:
-          limits:
-            cpu: "1"
-            memory: 500Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst
