@@ -11,8 +11,8 @@ pipeline {
     DOCKERHUB_CREDENTIAL_ID = 'dockerhub-id'
     GITHUB_CREDENTIAL_ID = 'github-id'
     KUBECONFIG_CREDENTIAL_ID = 'demo-kubeconfig'
-    DOCKERHUB_ORG = 'runzexia'
-    GITHUB_ORG = 'runzexia'
+    DOCKERHUB_NAMESPACE = 'runzexia'
+    GTIHUB_ACCOUNT = 'runzexia'
     APP_NAME = 'devops-docs-sample'
   }
   stages {
