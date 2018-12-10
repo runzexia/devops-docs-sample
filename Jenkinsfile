@@ -5,7 +5,7 @@ pipeline {
     }
   }
   parameters{
-     string(name:'TAG_NAME',defaultValue: '',description:'')
+     string(name:'TAG_NAME',defaultValue: 'v0.0.1',description:'')
   }
   environment {
     DOCKERHUB_CREDENTIAL_ID = 'dockerhub-id'
@@ -83,7 +83,7 @@ pipeline {
            withCredentials([usernamePassword(credentialsId: "$GITHUB_CREDENTIAL_ID", passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
              sh 'git config --global user.email "kubesphere@yunify.com" '
              sh 'git config --global user.name "kubesphere" '
-             sh 'git tag -a $TAG_NAME -m "$TAG_NAME" '
+             sh 'git tag -a $TAG_NAME -m "$params.TAG_NAME" '
              sh 'git push https://$GIT_USERNAME:$GIT_PASSWORD@github.com/$GTIHUB_ACCOUNT/$APP_NAME.git --tags'
            }
          sh 'docker tag  docker.io/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER docker.io/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME '
