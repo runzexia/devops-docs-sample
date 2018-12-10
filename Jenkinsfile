@@ -5,7 +5,7 @@ pipeline {
     }
   }
   parameters{
-     string(name:'TAG_NAME',defaultValue: 'v0.1.3',description:'')
+     string(name:'TAG_NAME',defaultValue: 'v0.1.4',description:'')
   }
   environment {
     DOCKERHUB_CREDENTIAL_ID = 'dockerhub-id'
