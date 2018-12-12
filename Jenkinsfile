@@ -5,7 +5,7 @@ pipeline {
     }
   }
   parameters{
-     string(name:'TAG_NAME',defaultValue: 'v0.1.4',description:'')
+     string(name:'TAG_NAME',defaultValue: 'v0.1.5',description:'')
   }
   environment {
     DOCKERHUB_CREDENTIAL_ID = 'dockerhub-id'
@@ -67,7 +67,7 @@ pipeline {
         branch 'master'
       }
       steps {
-        input(id: 'deploy-to-dev', message: 'deploy to dev?')
+        input(id: 'deploy-to-dev', message: 'deploy to dev?', submitter: 'runzexia' )
         kubernetesDeploy(configs: 'deploy/dev/**', enableConfigSubstitution: true, kubeconfigId: "$KUBECONFIG_CREDENTIAL_ID")
       }
     }
